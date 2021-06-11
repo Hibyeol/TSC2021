@@ -17,5 +17,6 @@ public class CardAnimation : MonoBehaviour
 		LeanTween.move(card, destination.position + cardSet, time);
 		Debug.Log(time);
 		Debug.Log(time);
+		card.transform.parent = destination;
 	}
 }
