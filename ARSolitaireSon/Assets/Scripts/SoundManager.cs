@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundMgr : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
-    public static SoundMgr Intance = null;
+    public static SoundManager Intance = null;
 
     public AudioClip cardswap;
     public AudioClip cardclick;
@@ -17,7 +17,7 @@ public class SoundMgr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(Intance == null)
+        if (Intance == null)
         {
             Intance = this;
         }
@@ -26,7 +26,7 @@ public class SoundMgr : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(gameObject);
-        
+
     }
 
     public void CardSwap()

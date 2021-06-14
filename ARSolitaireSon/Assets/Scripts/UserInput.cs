@@ -84,6 +84,7 @@ public class UserInput : MonoBehaviour
                     // clicked bottom 바텀을 클릭했을 경우
                     Bottom(hit.collider.gameObject);
                 }
+                SoundManager.Intance.CardClick();
             }
         }
     }
