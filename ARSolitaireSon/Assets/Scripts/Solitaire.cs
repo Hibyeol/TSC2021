@@ -36,6 +36,8 @@ public class Solitaire : MonoBehaviour
     private int trips;
     private int tripsRemainder;
     private int difficulty;
+    private CardAnimation cardAnimation;
+
 
     private void Awake()
     {
@@ -46,6 +48,7 @@ public class Solitaire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cardAnimation = cardAnimation = FindObjectOfType<CardAnimation>();
         bottoms = new List<string>[] { bottom0, bottom1, bottom2, bottom3, bottom4, bottom5, bottom6 };
         PlayCards();
     }
@@ -115,7 +118,8 @@ public class Solitaire : MonoBehaviour
             foreach (string card in bottoms[i])
             {
                 yield return new WaitForSeconds(0.05f);
-                GameObject newCard = Instantiate(cardPrefab, new Vector3(bottomPos[i].transform.position.x, bottomPos[i].transform.position.y - yOffset, bottomPos[i].transform.position.z - zOffset), Quaternion.identity, bottomPos[i].transform);
+                GameObject newCard = Instantiate(cardPrefab, deckButton.transform.position, Quaternion.identity, bottomPos[i].transform);
+                cardAnimation.MovingAnimation(newCard, bottomPos[i].transform, new Vector3(0.0f, -yOffset, -zOffset));
                 newCard.transform.localScale = new Vector3(1.0f, 0.9f, 1.0f);
                 newCard.name = card;
                 Debug.Log("[Solitaire] newCard.name = "+newCard.name+" / i = "+i);
@@ -215,7 +219,8 @@ public class Solitaire : MonoBehaviour
 
             foreach (string card in deckTrips[deckLocation])
             {
-                GameObject newTopCard = Instantiate(cardPrefab, new Vector3(deckButton.transform.position.x + xOffset, deckButton.transform.position.y, deckButton.transform.position.z + zOffset), Quaternion.identity, deckButton.transform);
+                GameObject newTopCard = Instantiate(cardPrefab, deckButton.transform.position, Quaternion.identity, deckButton.transform);
+                cardAnimation.MovingAnimation(newTopCard, deckButton.transform, new Vector3(xOffset, 0.0f, zOffset));
                 newTopCard.transform.localScale = new Vector3(1.0f, 0.9f, 1.0f);
                 xOffset = xOffset + 0.5f;
                 zOffset = zOffset - 0.002f;

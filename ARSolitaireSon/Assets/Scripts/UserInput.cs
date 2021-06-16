@@ -12,7 +12,7 @@ public class UserInput : MonoBehaviour
     private int clickCount = 0;
     public CardAnimation cardAnimation;
     int standard = -1;
-
+   
 
 
     // Start is called before the first frame update
@@ -280,7 +280,14 @@ public class UserInput : MonoBehaviour
         //slot1.transform.position = new Vector3(selected.transform.position.x, selected.transform.position.y - yOffset, selected.transform.position.z - 0.01f);
         //slot1.transform.parent = selected.transform; // this makes the children move with the parents
 
-        cardAnimation.MovingAnimation(slot1, selected.transform);
+        if (s2.top)
+        {
+            cardAnimation.MovingAnimation(slot1, selected.transform, new Vector3(0.0f, 0.0f, -0.01f));
+        }
+        else
+        {
+            cardAnimation.MovingAnimation(slot1, selected.transform, new Vector3(0.0f, -0.25f, -0.01f));
+        }
 
         if (s1.inDeckPile) // removes the cards from the top pile to prevent duplicate cards
         {
