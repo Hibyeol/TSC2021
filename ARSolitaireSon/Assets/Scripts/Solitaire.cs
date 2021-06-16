@@ -218,7 +218,7 @@ public class Solitaire : MonoBehaviour
                 GameObject newTopCard = Instantiate(cardPrefab, new Vector3(deckButton.transform.position.x + xOffset, deckButton.transform.position.y, deckButton.transform.position.z + zOffset), Quaternion.identity, deckButton.transform);
                 newTopCard.transform.localScale = new Vector3(1.0f, 0.9f, 1.0f);
                 xOffset = xOffset + 0.5f;
-                zOffset = zOffset - 0.2f;
+                zOffset = zOffset - 0.002f;
                 newTopCard.name = card;
                 tripsOnDisplay.Add(card);
                 newTopCard.GetComponent<Selectable>().faceUp = true;
